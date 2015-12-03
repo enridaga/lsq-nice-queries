@@ -428,6 +428,7 @@ public class QueryingLSQ {
 					Resource re = m.createResource();
 					re.addProperty(m.createProperty(bns + "prototypeValue"), r.getValue());
 					re.addLiteral(m.createProperty(bns + "variable"), r.getKey());
+					m.add(m.createResource(query), m.createProperty(bns + "substitutions"), re);
 				}
 			}
 			
@@ -486,8 +487,8 @@ public class QueryingLSQ {
 	public static void main(String[] args) throws IOException {
 		log.info("Starting");
 		// 1. Generate the list of queries for the endpoint (can comment out if you already did it!)
-		log.info("Saving the query list from the endpoint");
-		generateQueries("http://dbpedia.org/sparql", "dbpedia-queries.dat");
+		//log.info("Saving the query list from the endpoint");
+		//generateQueries("http://dbpedia.org/sparql", "dbpedia-queries.dat");
 		// Reading queries
 		log.info("Loading query list");
 		Set<String> queries = readQueries("dbpedia-queries.dat");
